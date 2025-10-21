@@ -22,7 +22,7 @@ import (
 const (
 	TempDir   = "downloads/sections/" //directory for temp files
 	DestDir   = "downloads/"          //dir for final file
-	userAgent = "Dinky Doinks"
+	userAgent = "Prinia"
 
 	/*
 		Url1     = "https://starecat.com/content/wp-content/uploads/tired-cat-smoking-a-cigarette.jpg"
