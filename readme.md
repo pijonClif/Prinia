@@ -5,7 +5,7 @@ Prinia is a command-line tool for downloading files concurrently.
 ## Build
 
 ```
-go build -o prinia main.go
+go build -o prinia ./cmd/main.go
 ```
 
 ## Usage
@@ -17,7 +17,3 @@ go build -o prinia main.go
 *   `-u`: Download URL
 *   `-f`: Output filename
 *   `-s`: Number of sections to split the download into
-
-## Dependencies
-
-*   Go (for building the application)
