@@ -9,12 +9,12 @@ import (
 
 /*======== TO-DO ========
 >> [o] user input ((flag))
->> [~] bug fix + upar-upar se redo err handling
->> [~] refactrr code
+>> [o] bug fix + upar-upar se redo err handling
+>> [o] refactrr code
 >> [-] download multiple sources
 >> [-] progress display
 >> [-] a frontend maybe?? ((fyne))
-*/
+>> [-] tests apparently*/
 
 /*
 const (

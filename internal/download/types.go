@@ -18,10 +18,10 @@ type Section struct {
 }
 
 func sectionPath(i int) string {
-	return filepath.Join(tempDir, fmt.Sprintf("section-%d.tmp", i))
+	return filepath.Join(TempDir, fmt.Sprintf("section-%d.tmp", i))
 }
 
 // DestPath joins the dest dir with a filename.
 func DestPath(fileName string) string {
-	return filepath.Join(destDir, fileName)
+	return filepath.Join(DestDir, fileName)
 }

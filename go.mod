@@ -3,6 +3,7 @@ module prinia
 go 1.24.2
 
 require (
+	github.com/h2non/filetype v1.1.3 // indirect
 	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	golang.org/x/sys v0.29.0 // indirect
