@@ -30,6 +30,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	download.SetDestDir(task.Dir)
+
+	if task.DirOnly {
+		if err := download.EnsureDirs(); err != nil {
+			log.Fatal(err)
+		}
+		log.Printf("download directory ready: %s", download.DestDir)
+		return
+	}
+
 	if err := download.Run(task.URL, task.FileName, task.Sections); err != nil {
 		log.Fatal(err)
 	}

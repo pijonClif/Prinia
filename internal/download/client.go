@@ -11,7 +11,7 @@ func NewRequest(method, url string) (*http.Request, error) {
 	req, err := http.NewRequest(method, url, nil)
 
 	if err != nil {
-		return nil, fmt.Errorf("\ncreate %s request: %w", method, err)
+		return nil, fmt.Errorf("create %s request: %w", method, err)
 	}
 
 	req.Header.Set("User-Agent", userAgent)

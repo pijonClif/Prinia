@@ -1,19 +1,16 @@
 package download
 
 import (
+	"bufio"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"path"
+	"strings"
 	"time"
 
 	"github.com/h2non/filetype"
-)
-
-const (
-	TempDir = "downloads/sections/" //directory for temp files
-	DestDir = "downloads/"          //dir for final file
 )
 
 // tried to MIME the filetype from the header
@@ -45,12 +42,31 @@ func sniffExt(url string) string {
 }
 
 func EnsureDirs() error {
+
+	if DestDir == "" {
+		SetDestDir("")
+	}
+
+	if _, err := os.Stat(DestDir); os.IsNotExist(err) {
+		if !confirmCreate(DestDir) {
+			return fmt.Errorf("download directory %q does not exist, aborted", DestDir)
+		}
+	}
+
 	for _, d := range []string{DestDir, TempDir} {
 		if err := os.MkdirAll(d, 0755); err != nil {
 			return fmt.Errorf("create dir %s: %w", d, err)
 		}
 	}
 	return nil
+}
+
+// olso download dir
+func confirmCreate(dir string) bool {
+	fmt.Printf("download directory %q does not exist. create it? [y/n]: ", dir)
+	resp, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+	resp = strings.ToLower(strings.TrimSpace(resp))
+	return resp == "y" || resp == "yes"
 }
 
 func Run(url, fileName string, numSections int) error {
