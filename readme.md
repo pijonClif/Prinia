@@ -1,19 +1,42 @@
 # Prinia
 
-Prinia is a command-line tool for downloading files concurrently.
+command-line tool for downloading files concurrently. Splits the target file into byte-range sections, downloads them in parallel, then merges them back into one file.
 
-## Build
+## features
+
+- concurrent downloads via HTTP Range requests (one goroutine per section)
+- automatic file size detection (HEAD request)
+- automatic file extension detection via magic-byte sniffing, when no extension is given in `-f`
+- configurable output directory
+- temp section files cleaned up automatically after a successful merge
+
+## build
 
 ```
-go build -o prinia ./cmd/main.go
+go build -o prinia ./cmd/prinia
 ```
 
-## Usage
+## usage
 
 ```
 ./prinia -u <url> -f <filename> -s <sections>
 ```
 
-*   `-u`: Download URL
-*   `-f`: Output filename
-*   `-s`: Number of sections to split the download into
+- `-u`: download URL
+- `-f`: output filename
+- `-s`: number of sections to split the download into
+- `-dir`: download directory (default: `./downloads`)
+
+pass `-dir` on its own (with no `-u`/`-f`/`-s`) to just set up the download directory without starting a download:
+
+```
+./prinia -dir ./my-downloads
+```
+
+## tests
+
+```
+go test ./...
+```
+
+covers section byte-range math (even/uneven splits, edge cases) and section merging/cleanup (ordering, missing-file errors, stale-file overwrite)

@@ -6,9 +6,6 @@ import (
 )
 
 const (
-	//~~yes i am hardcoding the dirs sue me~~ hardcoded no more
-	//TempDir   = "C:/Users/reddy/Stuff/Go Projs/Prinia/downloads/Sections" // dir for temp section files
-	//DestDir   = "C:/Users/reddy/Stuff/Go Projs/Prinia/downloads"          // dir for final file
 	userAgent = "Prinia"
 )
 
