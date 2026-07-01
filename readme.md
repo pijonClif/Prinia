@@ -2,14 +2,6 @@
 
 command-line tool for downloading files concurrently. Splits the target file into byte-range sections, downloads them in parallel, then merges them back into one file.
 
-## features
-
-- concurrent downloads via HTTP Range requests (one goroutine per section)
-- automatic file size detection (HEAD request)
-- automatic file extension detection via magic-byte sniffing, when no extension is given in `-f`
-- configurable output directory
-- temp section files cleaned up automatically after a successful merge
-
 ## build
 
 ```
